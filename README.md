@@ -16,7 +16,14 @@ Getting Started
   6. Save all files (`Option + Command + S` if using Sublime)
   7. Rename `firestarter-demo.pot` from `languages` folder to use the theme's slug
 
-Notes from Underscores' README.md
+Changes to underscores
+---------------
+* `src` directory added to theme root
+* All CSS from style.css (except the theme information at the top) removed and placed in `src/scss/underscores.scss` to be imported by `main.scss` in the same directory
+* Enqueue the minified Firestarted stylesheet in functions.php `wp_enqueue_style( 'firestarter-demo-main-style', get_template_directory_uri() . '/src/css/main.min.css' );`
+
+
+Notes from underscores' README.md
 ---------------
 
 * A just right amount of lean, well-commented, modern, HTML5 templates.
