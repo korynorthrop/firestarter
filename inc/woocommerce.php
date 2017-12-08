@@ -29,7 +29,7 @@ add_action( 'after_setup_theme', 'firestarter_demo_woocommerce_setup' );
  * @return void
  */
 function firestarter_demo_woocommerce_scripts() {
-	wp_enqueue_style( 'new-theme-name-woocommerce-style', get_template_directory_uri() . '/woocommerce.css' );
+	wp_enqueue_style( 'firestarter-demo-woocommerce-style', get_template_directory_uri() . '/woocommerce.css' );
 
 	$font_path   = WC()->plugin_url() . '/assets/fonts/';
 	$inline_font = '@font-face {
@@ -43,7 +43,7 @@ function firestarter_demo_woocommerce_scripts() {
 			font-style: normal;
 		}';
 
-	wp_add_inline_style( 'new-theme-name-woocommerce-style', $inline_font );
+	wp_add_inline_style( 'firestarter-demo-woocommerce-style', $inline_font );
 }
 add_action( 'wp_enqueue_scripts', 'firestarter_demo_woocommerce_scripts' );
 

@@ -28,7 +28,7 @@ function firestarter_demo_jetpack_setup() {
 	// Add theme support for Content Options.
 	add_theme_support( 'jetpack-content-options', array(
 		'post-details' => array(
-			'stylesheet' => 'new-theme-name-style',
+			'stylesheet' => 'firestarter-demo-style',
 			'date'       => '.posted-on',
 			'categories' => '.cat-links',
 			'tags'       => '.tags-links',

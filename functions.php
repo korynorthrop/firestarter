@@ -117,11 +117,14 @@ add_action( 'widgets_init', 'firestarter_demo_widgets_init' );
  * Enqueue scripts and styles.
  */
 function firestarter_demo_scripts() {
-	wp_enqueue_style( 'new-theme-name-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'firestarter-demo-style', get_stylesheet_uri() );
 
-	wp_enqueue_script( 'new-theme-name-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+	// Enqueue the main 'firestarter-demo' minified stylesheet
+	wp_enqueue_style( 'firestarter-demo-main-style', get_template_directory_uri() . '/src/css/main.min.css' );
 
-	wp_enqueue_script( 'new-theme-name-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+	wp_enqueue_script( 'firestarter-demo-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+
+	wp_enqueue_script( 'firestarter-demo-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
