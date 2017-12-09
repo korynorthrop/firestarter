@@ -1,0 +1,32 @@
+.navbar-toggler {
+	.icon-bar {
+    display: block;
+    width: 30px;
+    height: 3px;
+    border-radius: 1px;
+    background-color: $body-color;
+    @include prefix(transition, all .3s ease, webkit ms o moz);
+	}
+	.icon-bar + .icon-bar {
+		margin-top: 6px;
+	}
+	.icon-bar.third {
+		opacity: 1;
+	}
+}
+.navbar-toggler:not(.collapsed) {
+	.icon-bar.first {
+		@include prefix(transform, rotate(45deg), webkit ms o moz);
+		position: relative;
+		top: 6px;
+	}
+	.icon-bar + .icon-bar {
+		margin-top: 3px;
+	}
+	.icon-bar.second {
+	  @include prefix(transform, rotate(-45deg), webkit ms o moz);
+	}
+	.icon-bar.third {
+    opacity: 0;
+	}
+}

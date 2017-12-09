@@ -42,12 +42,23 @@
 			endif; ?>
 		</div><!-- .site-branding -->
 
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'firestarter-demo' ); ?></button>
+		<nav id="site-navigation" class="navbar navbar-expand-lg p-0">
+			<button class="navbar-toggler pointer noborder" type="button" data-toggle="collapse" data-target="#main-nav-menu" aria-controls="main-nav-menu" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar first"></span>
+        <span class="icon-bar second"></span>
+        <span class="icon-bar third"></span>
+			</button>
 			<?php
 				wp_nav_menu( array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
+					'theme_location' 	=> 'primary',
+					'menu_id'        	=> 'primary-menu',
+					'depth'           => 2,
+					'container'       => 'div',
+          'container_class' => 'collapse navbar-collapse',
+          'container_id'    => 'main-nav-menu',
+					'menu_class'      => 'navbar-nav m-0', // add Bootstrap menu classes
+					'walker'					=> new WP_Bootstrap_Navwalker() // utilize Bootstrap navwalker class
 				) );
 			?>
 		</nav><!-- #site-navigation -->
