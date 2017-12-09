@@ -92,7 +92,12 @@ gulp.task('cleanjs', function() {
 
 // Move the vendor javascript files into our /src/js folder
 gulp.task('copy-js', function() {
-  return gulp.src(['node_modules/bootstrap/dist/js/bootstrap.min.js', 'node_modules/jquery/dist/jquery.min.js', 'node_modules/tether/dist/js/tether.min.js'])
+  return gulp.src([
+      'node_modules/bootstrap/dist/js/bootstrap.min.js',
+      'node_modules/jquery/dist/jquery.min.js',
+      'node_modules/tether/dist/js/tether.min.js',
+      'node_modules/popper.js/dist/umd/popper.min.js'
+    ])
     .pipe(gulp.dest("src/js/vendor"))
     .pipe(browserSync.stream());
 });
@@ -101,7 +106,7 @@ gulp.task('copy-js', function() {
 gulp.task('scripts', function(callback){ gulpSequence('concat-js', 'minify-js', 'copy-js')(callback) });
 
 
-// Copy the raw image to the general assets directory
+// Copy new/changed images from the raw directory to the root assets directory
 gulp.task( 'image-copy', function() {
   return gulp.src('src/assets/raw/*')
     .pipe(changed('src/assets'))
@@ -109,7 +114,7 @@ gulp.task( 'image-copy', function() {
     .pipe(browserSync.stream());
 });
 
-// Minify the images placed in the general assets directory
+// Minify the images in the root assets directory
 gulp.task( 'images-min', function() {
   return gulp.src('src/assets/*')
     .pipe(imagemin([      
@@ -126,13 +131,10 @@ gulp.task( 'images-min', function() {
     .pipe(gulp.dest('src/assets'));
 });
 
-// Run all image tasks
-gulp.task('images', function(callback){ gulpSequence('image-copy', 'images-min')(callback) });
-
 // Watch for changes to SASS files (run appropriate styles tasks when they change)
 gulp.task('watch', function () {
   gulp.watch('src/scss/**/*.scss', ['styles']);
-  gulp.watch('src/assets/raw/*', ['images']);
+  gulp.watch('src/assets/raw/*', ['image-copy']);
   // gulp.watch([basePaths.dev + 'js/**/*.js','js/**/*.js','!js/child-theme.js','!js/child-theme.min.js'], ['scripts']);
 });
 
@@ -146,6 +148,9 @@ gulp.task('browser-sync', function() {
 
 // Setup the browser synch tasks
 gulp.task('watch-bs', ['browser-sync', 'watch'], function () { });
+
+// Run some tasks to optimize for distribution/production
+gulp.task('dist', ['images-min'], function () { });
 
 // Declare the default task(s) to run if a plain 'gulp' command is entered
 gulp.task('default', ['styles']);
