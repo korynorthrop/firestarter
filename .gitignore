@@ -12,3 +12,4 @@ dist/*
 src/assets/*
 !src/assets/raw
 src/assets/raw/*
+src/css/*
