@@ -153,4 +153,4 @@ gulp.task('watch-bs', ['browser-sync', 'watch'], function () { });
 gulp.task('dist', ['images-min'], function () { });
 
 // Declare the default task(s) to run if a plain 'gulp' command is entered
-gulp.task('default', ['styles']);
+gulp.task('default', ['styles', 'scripts']);

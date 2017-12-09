@@ -16,6 +16,7 @@ Getting Started
   5. Search for: `firestarter-demo-` and replace with: `new-theme-name-`
   6. Rename `firestarter-demo.pot` from `languages` folder to use the theme's slug
   7. Save all files (`Option + Command + S` if using Sublime)
+* Run `gulp` to generate the initial compiled CSS and JS files
 
 Changes to underscores
 ---------------
