@@ -105,6 +105,8 @@ gulp.task('copy-js', function() {
 // Run the all of the Gulp tasks relating to scripts
 gulp.task('scripts', function(callback){ gulpSequence('concat-js', 'minify-js', 'copy-js')(callback) });
 
+// Run the concat and minify tasks only (don't copy vendor js scripts)
+gulp.task('watch-scripts', function(callback){ gulpSequence('concat-js', 'minify-js')(callback) });
 
 // Copy new/changed images from the raw directory to the root assets directory
 gulp.task( 'image-copy', function() {
@@ -131,11 +133,11 @@ gulp.task( 'images-min', function() {
     .pipe(gulp.dest('src/assets'));
 });
 
-// Watch for changes to SASS files (run appropriate styles tasks when they change)
+// Watch for changes to sass, js, and image files
 gulp.task('watch', function () {
   gulp.watch('src/scss/**/*.scss', ['styles']);
+  gulp.watch(['src/js/*.js','!src/js/*.min.js','!src/js/combined.js'], ['watch-scripts']);
   gulp.watch('src/assets/raw/*', ['image-copy']);
-  // gulp.watch([basePaths.dev + 'js/**/*.js','js/**/*.js','!js/child-theme.js','!js/child-theme.min.js'], ['scripts']);
 });
 
 // Refresh browser when changes to minfified CSS, PHP files, and raw images are detected
