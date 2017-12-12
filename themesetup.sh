@@ -30,5 +30,13 @@ find . ! -name 'setup.sh' -type f -exec perl -pi -e "s/firestarter-demo-/$hyphen
 # Rename firestarter-demo.pot from languages folder to new-theme-name.pot
 mv languages/firestarter-demo.pot "languages/$hyphens.pot"
 
+# Get the current directory path and replace the firestarter-demo with the new theme name
+cur_dir=$(pwd)
+cur_name=$(echo ${cur_dir//*\/})
+theme_name=$(echo ${cur_dir//$cur_name/$hyphens})
+mv $cur_dir $theme_name
+
+# Refresh the directory
+cd .
 
 echo "Theme setup complete."
