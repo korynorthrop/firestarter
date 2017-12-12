@@ -7,15 +7,8 @@ Getting Started
 ---------------
 * Install Wordpress locally
 * Download Firestarter and place in themes directory
+* Run `sh themesetup.sh` and type in a New Name for your theme, the shell script will find and replace the text in the theme files and change the theme directory name to match your chosen theme name
 * Run `npm install` from inside the Firestarter theme directory
-* Find and replace the Firestarter Demo text from theme files
-  1. Search for: `'firestarter-demo'` and replace with: `'new-theme-name'`
-  2. Search for: `firestarter_demo_` and replace with: `new_theme_name_`
-  3. Search for: `Text Domain: firestarter-demo` and replace with: `Text Domain: new-theme-name` in `style.css`.
-  4. Search for: <code>&nbsp;Firestarter_Demo</code> and replace with: <code>&nbsp;New_Theme_Name</code>
-  5. Search for: `firestarter-demo-` and replace with: `new-theme-name-`
-  6. Rename `firestarter-demo.pot` from `languages` folder to use the theme's slug
-  7. Save all files (`Option + Command + S` if using Sublime)
 * Run `gulp` to generate the initial compiled CSS and JS files
 
 Changes to underscores
@@ -27,6 +20,18 @@ Changes to underscores
 * Add Bootstrap navwalker to `inc` directory and require it in functions.php `require get_template_directory() . '/inc/bootstrap-wp-navwalker.php';` adopted from [https://github.com/wp-bootstrap/wp-bootstrap-navwalker/](https://github.com/wp-bootstrap/wp-bootstrap-navwalker/) using the 'v4' branch for Bootstrap 4
 * Update `header.php` to use Bootstrap navwalker in `wp_nav_menu` call and modify the `<button>` markup to use Firestarter toggle button
 * Changed `register_nav_menus` from `menu-1` to `primary` in functions.php
+
+Notes about `themesetup.sh`
+---------------
+This shell script does a global find and replace of the theme files based on the "Getting Started" section of Underscores README.md file [https://github.com/automattic/_s](here). Below is a summary of what happens under the hood.
+* Find and replace the Firestarter Demo text from theme files
+  1. Search for: `'firestarter-demo'` and replace with: `'new-theme-name'`
+  2. Search for: `firestarter_demo_` and replace with: `new_theme_name_`
+  3. Search for: `Text Domain: firestarter-demo` and replace with: `Text Domain: new-theme-name` in `style.css`.
+  4. Search for: <code>&nbsp;Firestarter_Demo</code> and replace with: <code>&nbsp;New_Theme_Name</code>
+  5. Search for: `firestarter-demo-` and replace with: `new-theme-name-`
+  6. Rename `firestarter-demo.pot` from `languages` folder to use the theme's slug
+  7. Save all files (`Option + Command + S` if using Sublime)
 
 
 Notes from underscores' README.md
