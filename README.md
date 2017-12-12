@@ -23,15 +23,15 @@ Changes to underscores
 
 Notes about `themesetup.sh`
 ---------------
-This shell script does a global find and replace of the theme files based on the "Getting Started" section of Underscores README.md file [https://github.com/automattic/_s](here). Below is a summary of what happens under the hood.
-* Find and replace the Firestarter Demo text from theme files
-  1. Search for: `'firestarter-demo'` and replace with: `'new-theme-name'`
-  2. Search for: `firestarter_demo_` and replace with: `new_theme_name_`
-  3. Search for: `Text Domain: firestarter-demo` and replace with: `Text Domain: new-theme-name` in `style.css`.
-  4. Search for: <code>&nbsp;Firestarter_Demo</code> and replace with: <code>&nbsp;New_Theme_Name</code>
-  5. Search for: `firestarter-demo-` and replace with: `new-theme-name-`
-  6. Rename `firestarter-demo.pot` from `languages` folder to use the theme's slug
-  7. Save all files (`Option + Command + S` if using Sublime)
+This shell script does a global find and replace of the theme files based on the "Getting Started" section of Underscores README.md file [here](https://github.com/automattic/_s). Below is a summary of what happens under the hood.
+
+1. Search for: `'firestarter-demo'` and replace with: `'new-theme-name'`
+2. Search for: `firestarter_demo_` and replace with: `new_theme_name_`
+3. Search for: `Text Domain: firestarter-demo` and replace with: `Text Domain: new-theme-name` in `style.css`.
+4. Search for: <code>&nbsp;Firestarter_Demo</code> and replace with: <code>&nbsp;New_Theme_Name</code>
+5. Search for: `firestarter-demo-` and replace with: `new-theme-name-`
+6. Rename `firestarter-demo.pot` from `languages` folder to use the theme's slug
+7. Save all files (`Option + Command + S` if using Sublime)
 
 
 Notes from underscores' README.md
