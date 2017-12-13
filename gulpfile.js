@@ -143,7 +143,7 @@ gulp.task('watch', function () {
 // Refresh browser when changes to minfified CSS, PHP files, and raw images are detected
 gulp.task('browser-sync', function() {
   browserSync.init(['src/css/*.min.css','./*.php','src/assets/raw/**/*'], {
-    proxy: "http://firestarterdemo.dev/",
+    proxy: "http://firestarter.dev/", // change this to your local development server
     notify: false
   });
 });
