@@ -7,7 +7,7 @@ Getting Started
 ---------------
 * Install Wordpress locally
 * Download Firestarter and place in themes directory
-* Run `sh themesetup.sh` and type in a New Name for your theme, the shell script will find and replace the text in the theme files and change the theme directory name to match your chosen theme name
+* Run `source themesetup.sh` and type in a New Name for your theme, the shell script will find and replace the text in the theme files and change the theme directory name to match your chosen theme name
 * Run `yarn install` from the theme directory
 * Run `gulp` to generate the initial compiled CSS and JS files
 * If you plan to use Browser Sync, be sure to change `proxy` to reflect your local development hostname within the `'browser-sync'` task in `gulpfile.js`
