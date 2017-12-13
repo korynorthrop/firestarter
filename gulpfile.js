@@ -108,6 +108,12 @@ gulp.task('scripts', function(callback){ gulpSequence('concat-js', 'minify-js', 
 // Run the concat and minify tasks only (don't copy vendor js scripts)
 gulp.task('watch-scripts', function(callback){ gulpSequence('concat-js', 'minify-js')(callback) });
 
+// Move Font Awesome font files into our /src/fonts directory
+gulp.task('icons', function() { 
+  return gulp.src('node_modules/font-awesome/fonts/**.*') 
+    .pipe(gulp.dest('src/fonts')); 
+});
+
 // Copy new/changed images from the raw directory to the root assets directory
 gulp.task( 'image-copy', function() {
   return gulp.src('src/assets/raw/*')
@@ -143,7 +149,7 @@ gulp.task('watch', function () {
 // Refresh browser when changes to minfified CSS, PHP files, and raw images are detected
 gulp.task('browser-sync', function() {
   browserSync.init(['src/css/*.min.css','./*.php','src/assets/raw/**/*'], {
-    proxy: "http://firestarter.dev/", // change this to your local development server
+    proxy: "http://lakebluffhistory.dev/", // change this to your local development server
     notify: false
   });
 });
@@ -155,4 +161,4 @@ gulp.task('watch-bs', ['browser-sync', 'watch'], function () { });
 gulp.task('dist', ['images-min'], function () { });
 
 // Declare the default task(s) to run if a plain 'gulp' command is entered
-gulp.task('default', ['styles', 'scripts']);
+gulp.task('default', ['styles', 'scripts', 'icons']);

@@ -1,5 +1,6 @@
 @import 'variables'; // import custom variables for the theme including Bootstrap overrides
 @import 'node_modules/bootstrap/scss/bootstrap'; // import main Bootstrap sass file
+@import 'node_modules/font-awesome/scss/font-awesome'; // import main Font Awesome sass file
 @import 'underscores'; // import the default underscoress CSS that was part of style.css
 @import 'mixins'; // import theme mixins/functions
 @import 'classes'; // import theme classes

@@ -50,6 +50,7 @@
         <span class="icon-bar third"></span>
 			</button>
 			<?php
+			if (has_nav_menu('primary')) :
 				wp_nav_menu( array(
 					'theme_location' 	=> 'primary',
 					'menu_id'        	=> 'primary-menu',
@@ -60,6 +61,7 @@
 					'menu_class'      => 'navbar-nav m-0', // add Bootstrap menu classes
 					'walker'					=> new WP_Bootstrap_Navwalker() // utilize Bootstrap navwalker class
 				) );
+			endif;
 			?>
 		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->
