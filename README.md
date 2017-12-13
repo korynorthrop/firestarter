@@ -15,34 +15,34 @@ Getting Started
 Theme Structure
 ---------------
 ```shell
-themes/firestarter/   						# → Root of your Firestarter based theme
-├── dist/                 				# → Built theme assets (don't edit)
-├── inc/            							# → Default Underscores built directory with some theme include files
-├── js/            								# → Default Underscores javascript files (can ignore)
-├── languages/            				# → Underscores built directory for theme language files
-├── layouts/            					# → Default Underscores layouts
-├── node_modules/         				# → Node.js packages (don't edit)
-├── sass/            							# → Default Underscores stylesheets
-├── src/            							# → Firestarter theme assets and templates
-│   ├── assets/           				# → Images go here
-│   │   ├── raw/          				# → Place unprocessed images here
-│   ├── css/     									# → Auto-generated Firestarter stylesheets (don't edit)
-│   ├── js/        								# → Firestarter js files go here
-│   │   ├── vendor/       				# → 3rd party js files go here
-│   │   ├── combined.js   				# → Auto-generated file (don't edit)
-│   │   ├── combined.min.js   		# → Auto-generated file (don't edit)
-│   │   ├── combined.min.js.map 	# → Auto-generated file (don't edit)
-│   ├── scss/    									# → Firestarter stylehseets go here
-│   │   ├── main.scss   					# → Main stylesheet that imports other relevant stylesheets
-│   │   ├── variables.scss   			# → Declare theme variables and Bootstrap overrides
-│   │   ├── underscores.scss   		# → Default Underscores styles moved from default style.css file
-│   │   ├── mixins.scss   				# → SASS mixins and functions that can be used in scss files
-│   │   ├── classes.scss   				# → Declare custom theme classes here
-├── template-parts/       				# → Default Underscores template parts
-├── package.json          				# → Node.js dependencies and scripts
-├── gulpfile.js          					# → Handles theme development automation tasks
-├── style.css          						# → Contains theme information, but no actuall CSS
-├── themesetup.sh          				# → Shell file used for one-time theme setup before development begins
+themes/firestarter/ 			# → Root of your Firestarter based theme
+├── dist/ 			# → Built theme assets (don't edit)
+├── inc/ 			# → Default Underscores built directory with some theme include files
+├── js/ 			# → Default Underscores javascript files (can ignore)
+├── languages/ 			# → Underscores built directory for theme language files
+├── layouts/ 			# → Default Underscores layouts
+├── node_modules/ 			# → Node.js packages (don't edit)
+├── sass/ 			# → Default Underscores stylesheets
+├── src/ 			# → Firestarter theme assets and templates
+│   ├── assets/ 			# → Images go here
+│   │   ├── raw/ 			# → Place unprocessed images here
+│   ├── css/ 			# → Auto-generated Firestarter stylesheets (don't edit)
+│   ├── js/ 			# → Firestarter js files go here
+│   │   ├── vendor/ 			# → 3rd party js files go here
+│   │   ├── combined.js 			# → Auto-generated file (don't edit)
+│   │   ├── combined.min.js 			# → Auto-generated file (don't edit)
+│   │   ├── combined.min.js.map 			# → Auto-generated file (don't edit)
+│   ├── scss/ 			# → Firestarter stylehseets go here
+│   │   ├── main.scss 			# → Main stylesheet that imports other relevant stylesheets
+│   │   ├── variables.scss 			# → Declare theme variables and Bootstrap overrides
+│   │   ├── underscores.scss 			# → Default Underscores styles moved from default style.css file
+│   │   ├── mixins.scss 			# → SASS mixins and functions that can be used in scss files
+│   │   ├── classes.scss 			# → Declare custom theme classes here
+├── template-parts/ 			# → Default Underscores template parts
+├── package.json 			# → Node.js dependencies and scripts
+├── gulpfile.js 			# → Handles theme development automation tasks
+├── style.css 			# → Contains theme information, but no actuall CSS
+├── themesetup.sh 			# → Shell file used for one-time theme setup before development begins
 ```
 
 Changes to underscores
