@@ -109,9 +109,9 @@ gulp.task('scripts', function(callback){ gulpSequence('concat-js', 'minify-js', 
 gulp.task('watch-scripts', function(callback){ gulpSequence('concat-js', 'minify-js')(callback) });
 
 // Move Font Awesome font files into our /src/fonts directory
-gulp.task('icons', function() { 
-  return gulp.src('node_modules/font-awesome/fonts/**.*') 
-    .pipe(gulp.dest('src/fonts')); 
+gulp.task('icons', function() {
+  return gulp.src('node_modules/font-awesome/fonts/**.*')
+    .pipe(gulp.dest('src/fonts'));
 });
 
 // Copy new/changed images from the raw directory to the root assets directory
@@ -148,7 +148,7 @@ gulp.task('watch', function () {
 
 // Refresh browser when changes to minfified CSS, PHP files, and raw images are detected
 gulp.task('browser-sync', function() {
-  browserSync.init(['src/css/*.min.css','./*.php','src/assets/raw/**/*'], {
+  browserSync.init(['src/css/*.min.css','./inc/*.php','./template-parts/*.php','./*.php','src/assets/raw/**/*'], {
     proxy: "http://lakebluffhistory.dev/", // change this to your local development server
     notify: false
   });
