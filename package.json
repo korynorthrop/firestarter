@@ -34,7 +34,7 @@
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-pngquant": "^8.0.0",
     "imagemin-zopfli": "^6.0.0",
-    "jquery": "^3.5.1",
+    "jquery": "^3.5.0",
     "merge2": "^1.4.1",
     "popper.js": "^1.16.1",
     "tether": "^1.4.7"
