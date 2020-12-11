@@ -11,9 +11,11 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
+    "@wordpress/scripts": "^12.1.0",
     "bootstrap": "^4.5.3",
     "browser-sync": "^2.26.13",
     "del": "^3.0.0",
+    "dir-archiver": "^1.1.1",
     "font-awesome": "^4.7.0",
     "gulp": "^4.0.2",
     "gulp-changed": "^4.0.2",
@@ -36,10 +38,30 @@
     "imagemin-zopfli": "^6.0.0",
     "jquery": "^3.5.1",
     "merge2": "^1.4.1",
+    "node-sass": "^4.14.1",
     "popper.js": "^1.16.1",
+    "rtlcss": "^2.5.0",
     "tether": "^1.4.7"
   },
+  "rtlcssConfig": {
+    "options": {
+      "autoRename": false,
+      "autoRenameStrict": false,
+      "blacklist": {},
+      "clean": true,
+      "greedy": false,
+      "processUrls": false,
+      "stringMap": []
+    },
+    "plugins": [],
+    "map": false
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch": "node-sass sass/ -o ./ --source-map true --output-style expanded --indent-type tab --indent-width 1 -w",
+    "compile:css": "node-sass sass/ -o ./ && stylelint '*.css' --fix || true && stylelint '*.css' --fix",
+    "compile:rtl": "rtlcss style.css style-rtl.css",
+    "lint:scss": "wp-scripts lint-style 'sass/**/*.scss'",
+    "lint:js": "wp-scripts lint-js 'js/*.js'",
+    "bundle": "dir-archiver --src . --dest ../_s.zip --exclude .DS_Store .stylelintrc.json .eslintrc .git .gitattributes .github .gitignore README.md composer.json composer.lock node_modules vendor package-lock.json package.json .travis.yml phpcs.xml.dist sass style.css.map"
   }
 }

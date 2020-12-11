@@ -15,40 +15,43 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="profile" href="https://gmpg.org/xfn/11">
 
 	<?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
+<?php wp_body_open(); ?>
 <div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'firestarter-demo' ); ?></a>
+	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'firestarter-demo' ); ?></a>
 
 	<header id="masthead" class="site-header">
 		<div class="site-branding">
 			<?php
 			the_custom_logo();
-			if ( is_front_page() && is_home() ) : ?>
+			if ( is_front_page() && is_home() ) :
+				?>
 				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-			<?php else : ?>
+				<?php
+			else :
+				?>
 				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-			<?php
+				<?php
 			endif;
-
-			$description = get_bloginfo( 'description', 'display' );
-			if ( $description || is_customize_preview() ) : ?>
-				<p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
-			<?php
-			endif; ?>
+			$firestarter_demo_description = get_bloginfo( 'description', 'display' );
+			if ( $firestarter_demo_description || is_customize_preview() ) :
+				?>
+				<p class="site-description"><?php echo $firestarter_demo_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
+			<?php endif; ?>
 		</div><!-- .site-branding -->
 
-		<nav id="site-navigation" class="navbar navbar-expand-lg p-0">
-			<button class="navbar-toggler pointer noborder" type="button" data-toggle="collapse" data-target="#main-nav-menu" aria-controls="main-nav-menu" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="sr-only">Toggle navigation</span>
+		<nav id="site-navigation" class="main-navigation">
+			<button class="navbar-toggler pointer noborder" data-toggle="collapse" data-target="#main-nav-menu" aria-controls="main-nav-menu" aria-expanded="false" aria-label="Toggle navigation" >
+				<span class="sr-only"><?php esc_html_e( 'Primary Menu', 'firestarter-demo' ); ?></span>
         <span class="icon-bar first"></span>
         <span class="icon-bar second"></span>
         <span class="icon-bar third"></span>
-			</button>
+      </button>
 			<?php
 			if (has_nav_menu('primary')) :
 				wp_nav_menu( array(
@@ -65,5 +68,3 @@
 			?>
 		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->
-
-	<div id="content" class="site-content">

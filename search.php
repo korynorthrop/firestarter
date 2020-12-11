@@ -7,24 +7,26 @@
  * @package Firestarter_Demo
  */
 
-get_header(); ?>
+get_header();
+?>
 
-	<section id="primary" class="content-area">
-		<main id="main" class="site-main">
+	<main id="primary" class="site-main">
 
-		<?php
-		if ( have_posts() ) : ?>
+		<?php if ( have_posts() ) : ?>
 
 			<header class="page-header">
-				<h1 class="page-title"><?php
+				<h1 class="page-title">
+					<?php
 					/* translators: %s: search query. */
 					printf( esc_html__( 'Search Results for: %s', 'firestarter-demo' ), '<span>' . get_search_query() . '</span>' );
-				?></h1>
+					?>
+				</h1>
 			</header><!-- .page-header -->
 
 			<?php
 			/* Start the Loop */
-			while ( have_posts() ) : the_post();
+			while ( have_posts() ) :
+				the_post();
 
 				/**
 				 * Run the loop for the search to output the results.
@@ -41,10 +43,10 @@ get_header(); ?>
 
 			get_template_part( 'template-parts/content', 'none' );
 
-		endif; ?>
+		endif;
+		?>
 
-		</main><!-- #main -->
-	</section><!-- #primary -->
+	</main><!-- #main -->
 
 <?php
 get_sidebar();

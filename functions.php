@@ -7,6 +7,11 @@
  * @package Firestarter_Demo
  */
 
+if ( ! defined( '_S_VERSION' ) ) {
+	// Replace the version number of the theme on each release.
+	define( '_S_VERSION', '1.0.0' );
+}
+
 if ( ! function_exists( 'firestarter_demo_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
@@ -43,27 +48,40 @@ if ( ! function_exists( 'firestarter_demo_setup' ) ) :
 		add_theme_support( 'post-thumbnails' );
 
 		// This theme uses wp_nav_menu() in one location.
-		register_nav_menus( array(
-			'primary' => esc_html__( 'Primary', 'firestarter-demo' ),
-		) );
+		register_nav_menus(
+			array(
+				'primary' => esc_html__( 'Primary', 'firestarter-demo' ),
+			)
+		);
 
 		/*
 		 * Switch default core markup for search form, comment form, and comments
 		 * to output valid HTML5.
 		 */
-		add_theme_support( 'html5', array(
-			'search-form',
-			'comment-form',
-			'comment-list',
-			'gallery',
-			'caption',
-		) );
+		add_theme_support(
+			'html5',
+			array(
+				'search-form',
+				'comment-form',
+				'comment-list',
+				'gallery',
+				'caption',
+				'style',
+				'script',
+			)
+		);
 
 		// Set up the WordPress core custom background feature.
-		add_theme_support( 'custom-background', apply_filters( 'firestarter_demo_custom_background_args', array(
-			'default-color' => 'ffffff',
-			'default-image' => '',
-		) ) );
+		add_theme_support(
+			'custom-background',
+			apply_filters(
+				'firestarter_demo_custom_background_args',
+				array(
+					'default-color' => 'ffffff',
+					'default-image' => '',
+				)
+			)
+		);
 
 		// Add theme support for selective refresh for widgets.
 		add_theme_support( 'customize-selective-refresh-widgets' );
@@ -73,12 +91,15 @@ if ( ! function_exists( 'firestarter_demo_setup' ) ) :
 		 *
 		 * @link https://codex.wordpress.org/Theme_Logo
 		 */
-		add_theme_support( 'custom-logo', array(
-			'height'      => 250,
-			'width'       => 250,
-			'flex-width'  => true,
-			'flex-height' => true,
-		) );
+		add_theme_support(
+			'custom-logo',
+			array(
+				'height'      => 250,
+				'width'       => 250,
+				'flex-width'  => true,
+				'flex-height' => true,
+			)
+		);
 	}
 endif;
 add_action( 'after_setup_theme', 'firestarter_demo_setup' );
@@ -101,15 +122,17 @@ add_action( 'after_setup_theme', 'firestarter_demo_content_width', 0 );
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
 function firestarter_demo_widgets_init() {
-	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'firestarter-demo' ),
-		'id'            => 'sidebar-1',
-		'description'   => esc_html__( 'Add widgets here.', 'firestarter-demo' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
-	) );
+	register_sidebar(
+		array(
+			'name'          => esc_html__( 'Sidebar', 'firestarter-demo' ),
+			'id'            => 'sidebar-1',
+			'description'   => esc_html__( 'Add widgets here.', 'firestarter-demo' ),
+			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h2 class="widget-title">',
+			'after_title'   => '</h2>',
+		)
+	);
 }
 add_action( 'widgets_init', 'firestarter_demo_widgets_init' );
 
@@ -117,12 +140,13 @@ add_action( 'widgets_init', 'firestarter_demo_widgets_init' );
  * Enqueue scripts and styles.
  */
 function firestarter_demo_scripts() {
-	wp_enqueue_style( 'firestarter-demo-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'firestarter-demo-style', get_stylesheet_uri(), array(), _S_VERSION );
+	wp_style_add_data( 'firestarter-demo-style', 'rtl', 'replace' );
 
 	// Enqueue the main 'firestarter-demo' minified stylesheet
 	wp_enqueue_style( 'firestarter-demo-main-style', get_template_directory_uri() . '/src/css/main.min.css' );
 
-	wp_enqueue_script( 'firestarter-demo-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+	wp_enqueue_script( 'firestarter-demo-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 
 	// De-register and re-register jQuery js
 	wp_deregister_script('jquery');
@@ -136,8 +160,6 @@ function firestarter_demo_scripts() {
 	// Enqueue Popper, Bootstrap js
 	wp_enqueue_script( 'popper-js' );
 	wp_enqueue_script( 'bootstrap-js' );
-
-	wp_enqueue_script( 'firestarter-demo-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -166,16 +188,19 @@ require get_template_directory() . '/inc/template-functions.php';
 require get_template_directory() . '/inc/customizer.php';
 
 /**
+ * Register Custom Navigation Walker
+ */
+function register_navwalker(){
+	require_once get_template_directory() . '/inc/class-wp-bootstrap-navwalker.php';
+}
+add_action( 'after_setup_theme', 'register_navwalker' );
+
+/**
  * Load Jetpack compatibility file.
  */
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
-
-/**
- * Load custom Bootstrap nav walker.
- */
-require get_template_directory() . '/inc/class-wp-bootstrap-navwalker.php';
 
 /**
  * Load WooCommerce compatibility file.
