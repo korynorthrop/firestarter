@@ -146,6 +146,9 @@ function firestarter_demo_scripts() {
 	// Enqueue the main 'firestarter-demo' minified stylesheet
 	wp_enqueue_style( 'firestarter-demo-main-style', get_template_directory_uri() . '/src/css/main.min.css' );
 
+	// Enqueue the main 'new-biz-theme' minified javascript file
+	wp_enqueue_script( 'firestarter-demo-js', get_template_directory_uri() . '/src/js/combined.min.js', array(), _S_VERSION, true );
+
 	wp_enqueue_script( 'firestarter-demo-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 
 	// De-register and re-register jQuery js

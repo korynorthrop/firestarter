@@ -45,5 +45,5 @@ cd .
 
 echo " "
 echo "@@@@@@@@@@@"
-echo "Theme setup complete! Now run \`npm install\` to import theme dependencies."
+echo "Theme setup complete! Now run \`yarn install\` to import theme dependencies."
 echo " "
