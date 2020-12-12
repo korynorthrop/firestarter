@@ -146,7 +146,7 @@ function firestarter_demo_scripts() {
 	// Enqueue the main 'firestarter-demo' minified stylesheet
 	wp_enqueue_style( 'firestarter-demo-main-style', get_template_directory_uri() . '/src/css/main.min.css' );
 
-	// Enqueue the main 'new-biz-theme' minified javascript file
+	// Enqueue the main 'firestarter-demo' minified javascript file
 	wp_enqueue_script( 'firestarter-demo-js', get_template_directory_uri() . '/src/js/combined.min.js', array(), _S_VERSION, true );
 
 	wp_enqueue_script( 'firestarter-demo-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
@@ -193,7 +193,7 @@ require get_template_directory() . '/inc/customizer.php';
 /**
  * Register Custom Navigation Walker
  */
-function register_navwalker(){
+function register_navwalker() {
 	require_once get_template_directory() . '/inc/class-wp-bootstrap-navwalker.php';
 }
 add_action( 'after_setup_theme', 'register_navwalker' );

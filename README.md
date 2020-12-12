@@ -8,7 +8,7 @@ Getting Started
 * Install Wordpress locally
 * Download Firestarter and place in themes directory
 * `cd` into the new Firestarter theme directory and run `source themesetup.sh`. Type in a New Name for your theme; the shell script will find and replace the text in the theme files and change the theme directory name to match your chosen theme name
-* Run `yarn install` from the theme directory
+* Run `npm install` from the theme directory
 * Run `gulp` to generate the initial compiled CSS and JS files
 * If you plan to use Browser Sync, be sure to change `proxy` to reflect your local development hostname within the `'browser-sync'` task in `gulpfile.js`
 
@@ -50,10 +50,19 @@ Changes to underscores
 * `src` directory added to theme root
 * All CSS from style.css (except the theme information at the top) removed and placed in `src/scss/underscores.scss` to be imported by `main.scss` in the same directory
 * Enqueue the minified Firestarted stylesheet in functions.php `wp_enqueue_style( 'firestarter-demo-main-style', get_template_directory_uri() . '/src/css/main.min.css' );`
+* Enqueue the minified Firestarted javascript file in functions.php `wp_enqueue_script( 'firestarter-demo-js', get_template_directory_uri() . '/src/js/combined.min.js', array(), _S_VERSION, true );`
 * De-register and re-register jQuery in `functions.php` and also enqueue the Bootstrap and Popper js files
-* Add Bootstrap navwalker to `inc` directory and require it in functions.php `require get_template_directory() . '/inc/bootstrap-wp-navwalker.php';` adopted from [https://github.com/wp-bootstrap/wp-bootstrap-navwalker/](https://github.com/wp-bootstrap/wp-bootstrap-navwalker/) using the 'v4' branch for Bootstrap 4
+* Add Bootstrap navwalker PHP file to `inc` directory and the require it in functions.php (adopted from [https://github.com/wp-bootstrap/wp-bootstrap-navwalker/](https://github.com/wp-bootstrap/wp-bootstrap-navwalker/) using the 'v4' branch for Bootstrap 4) --> ****see code block below*
 * Update `header.php` to use Bootstrap navwalker in `wp_nav_menu` call and modify the `<button>` markup to use Firestarter toggle button
 * Changed `register_nav_menus` from `menu-1` to `primary` in functions.php
+
+```
+// Bootstrap 4 Navwalker inclusion in functions.php
+function register_navwalker() {
+   require_once get_template_directory() . '/inc/class-wp-bootstrap-navwalker.php';
+}
+add_action( 'after_setup_theme', 'register_navwalker' );
+```
 
 Notes about `themesetup.sh`
 ---------------
