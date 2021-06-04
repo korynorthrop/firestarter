@@ -1,3 +1,30 @@
+.main-navigation {
+	&.toggled {
+		.navbar-nav {
+			@include media-breakpoint-up(sm) {
+				display: flex;
+			}
+		}
+	}
+	.navbar-collapse {
+		&.collapse:not(.show) {
+				display: flex;
+		}
+	}
+	.navbar-nav {
+		flex-direction: row;
+		@include media-breakpoint-up(sm) {
+			display: flex;
+		}
+		.nav-item {
+			&+ .nav-item {
+				@include media-breakpoint-up(sm) {
+					margin-left: 30px;
+				}
+			}
+		}
+	}
+}
 .navbar-toggler {
 	.icon-bar {
     display: block;
