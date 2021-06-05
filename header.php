@@ -27,48 +27,50 @@
 
 	<header id="masthead" class="site-header">
 		<div class="container">
-			<div class="col">	
-				<div class="site-branding">
-					<?php
-					the_custom_logo();
-					if ( is_front_page() && is_home() ) :
-						?>
-						<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+			<div class="row">
+				<div class="col">	
+					<div class="site-branding">
 						<?php
-					else :
-						?>
-						<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-						<?php
-					endif;
-					$calco_theme_description = get_bloginfo( 'description', 'display' );
-					if ( $calco_theme_description || is_customize_preview() ) :
-						?>
-						<p class="site-description"><?php echo $calco_theme_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
-					<?php endif; ?>
-				</div><!-- .site-branding -->
+						the_custom_logo();
+						if ( is_front_page() && is_home() ) :
+							?>
+							<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+							<?php
+						else :
+							?>
+							<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+							<?php
+						endif;
+						$calco_theme_description = get_bloginfo( 'description', 'display' );
+						if ( $calco_theme_description || is_customize_preview() ) :
+							?>
+							<p class="site-description"><?php echo $calco_theme_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
+						<?php endif; ?>
+					</div><!-- .site-branding -->
 
-				<nav id="site-navigation" class="main-navigation">
-					<button class="navbar-toggler pointer noborder collapsed d-sm-none" data-toggle="collapse" data-target="#main-nav-menu" aria-controls="main-nav-menu" aria-expanded="false" aria-label="Toggle navigation" >
-						<span class="sr-only"><?php esc_html_e( 'Primary Menu', 'firestarter-demo' ); ?></span>
-						<span class="icon-bar first"></span>
-						<span class="icon-bar second"></span>
-						<span class="icon-bar third"></span>
-					</button>
-					<?php
-					if (has_nav_menu('primary')) :
-						wp_nav_menu( array(
-							'theme_location' 	=> 'primary',
-							'menu_id'        	=> 'primary-menu',
-							'depth'           => 2,
-							'container'       => 'div',
-							'container_class' => 'navbar-collapse',
-							'container_id'    => 'main-nav-menu',
-							'menu_class'      => 'navbar-nav m-0', // add Bootstrap menu classes
-							'walker'					=> new WP_Bootstrap_Navwalker() // utilize Bootstrap navwalker class
-						) );
-					endif;
-					?>
-				</nav><!-- #site-navigation -->
+					<nav id="site-navigation" class="main-navigation">
+						<button class="navbar-toggler pointer noborder collapsed d-sm-none" data-toggle="collapse" data-target="#main-nav-menu" aria-controls="main-nav-menu" aria-expanded="false" aria-label="Toggle navigation" >
+							<span class="sr-only"><?php esc_html_e( 'Primary Menu', 'firestarter-demo' ); ?></span>
+							<span class="icon-bar first"></span>
+							<span class="icon-bar second"></span>
+							<span class="icon-bar third"></span>
+						</button>
+						<?php
+						if (has_nav_menu('primary')) :
+							wp_nav_menu( array(
+								'theme_location' 	=> 'primary',
+								'menu_id'        	=> 'primary-menu',
+								'depth'           => 2,
+								'container'       => 'div',
+								'container_class' => 'navbar-collapse',
+								'container_id'    => 'main-nav-menu',
+								'menu_class'      => 'navbar-nav m-0', // add Bootstrap menu classes
+								'walker'					=> new WP_Bootstrap_Navwalker() // utilize Bootstrap navwalker class
+							) );
+						endif;
+						?>
+					</nav><!-- #site-navigation -->
+				</div>
 			</div>
 		</div>
 	</header><!-- #masthead -->
